@@ -1,4 +1,5 @@
 import json
+import logging
 import re
 
 from flask import Flask, request, render_template, send_from_directory
@@ -29,7 +30,11 @@ app.register_blueprint(loader_blueprint)
 
 @app.route("/search_page")
 def search_page():
-    return found_posts_func()
+    logging.info('Выполняется поиск')
+    try:
+        return found_posts_func()
+    except NameError:
+        return 'Ошибка поиска постов'
 
 
 @app.route("/list")
@@ -44,7 +49,10 @@ def page_post_upload():
 
 @app.route("/uploads/<path:path>")
 def static_dir(path):
-    return send_from_directory("uploads", path)
+    try:
+        return send_from_directory("uploads", path)
+    except TypeError:
+        logging.error('Ошибка при загрузке файла')
 
 
 app.run()

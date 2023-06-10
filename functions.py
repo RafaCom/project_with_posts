@@ -1,8 +1,13 @@
 import json
+import logging
 from json import JSONDecodeError
 import re
 
 from flask import request, render_template
+
+# Добавляем логирование
+logging.basicConfig(filename='log.log', level=logging.ERROR)
+logging.basicConfig(filename="basic.log", level=logging.INFO)
 
 # Скачиваем json файл
 try:
@@ -23,6 +28,7 @@ def is_filename_allowed(filename):
     # Проверка, есть ли в списке расширение файла
     if extension in ALLOWED_EXTENSIONS:
         return True
+    logging.info('Загруженный файл не картинка')
     return False
 
 
@@ -52,7 +58,7 @@ def loading(picture_name, content_name):
                 return f'Ну такое не подходит: {extension}'
         else:
             return 'Должен быть текст и картинка'
-    except Exception:
+    except NameError:
         return 'Ошибка при загрузке файла'
 
 
