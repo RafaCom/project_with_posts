@@ -6,8 +6,7 @@ import re
 from flask import request, render_template
 
 # Добавляем логирование
-logging.basicConfig(filename='log.log', level=logging.ERROR)
-logging.basicConfig(filename="basic.log", level=logging.INFO)
+logging.basicConfig(filename="log.log", encoding='utf-8', level=logging.INFO)
 
 # Скачиваем json файл
 try:
@@ -54,16 +53,19 @@ def loading(picture_name, content_name):
                 return render_template('post_uploaded.html', picture=filename, text=content)
 
             else:
+                logging.info('Файл - не изображние')
                 extension = filename.split(".")[-1].lower()
                 return f'Ну такое не подходит: {extension}'
         else:
             return 'Должен быть текст и картинка'
-    except NameError:
+    except FileNotFoundError:
+        logging.error('Ошибка при загрузке файла')
         return 'Ошибка при загрузке файла'
 
 
 def found_posts_func():
     search = request.args['s'].lower()
+    logging.info(f'Слово для поиска {search}')
     list_posts = []
     for post in publication:
         clean_text = re.sub(r"\W", " ", post['content'].lower())

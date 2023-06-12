@@ -1,5 +1,9 @@
 [
     {
+        "pic": "./uploads/images/лого_фриланс.png",
+        "content": "Привет чтото"
+    },
+    {
         "pic": "./uploads/images/view_more.png",
         "content": "смотри че нашел"
     },

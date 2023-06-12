@@ -30,16 +30,10 @@ app.register_blueprint(loader_blueprint)
 
 @app.route("/search_page")
 def search_page():
-    logging.info('Выполняется поиск')
     try:
         return found_posts_func()
     except NameError:
         return 'Ошибка поиска постов'
-
-
-@app.route("/list")
-def page_tag():
-    pass
 
 
 @app.route("/post_uploaded", methods=["POST"])
