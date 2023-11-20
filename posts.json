@@ -1,5 +1,25 @@
 [
     {
+        "pic": "./uploads/images/2 млн просмотров .png",
+        "content": "2"
+    },
+    {
+        "pic": "./uploads/images/IMG_20231009_075922_264.jpg",
+        "content": "Привет, как дела "
+    },
+    {
+        "pic": "./uploads/images/IMG-20230910-WA0001.jpg",
+        "content": "Родник"
+    },
+    {
+        "pic": "./uploads/images/IMG-20230910-WA0001.jpg",
+        "content": "Жопа"
+    },
+    {
+        "pic": "./uploads/images/IMG-20230910-WA0002.jpg",
+        "content": "На природе"
+    },
+    {
         "pic": "./uploads/images/лого_фриланс.png",
         "content": "Привет чтото"
     },

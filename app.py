@@ -49,4 +49,4 @@ def static_dir(path):
         logging.error('Ошибка при загрузке файла')
 
 
-app.run()
+app.run(port=8080, host='0.0.0.0')
